@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /*as propriedades largura e altura incluem o conteúdo, o preenchimento (padding) e a borda (border), mas não a margem.*/
+}
+
+/* aqui ficarão os parâmetros raiz da página */
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255,255,255,0.5);
+  --surface-color: rgba(255,255,255,0.05);
+  --surface-color-hover: rgba(0,0,0,0.02);
+  --highlight-color: rgba(255,255,255,0.2);
+  --switch-bg-url: url(./assets/sun.svg);
+  --stroke-color-light-mode: rgba(255, 255, 255, 0.50);
+  --switch-align: left;
+} 
+
+/* a classe .light está contida no <html> e nela são adicionadas alterações de estilo do root, que devem ser colocadas no CSS como var()*/
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0,0,0,0.5);
+  --surface-color: rgba(0,0,0,0.05);
+  --surface-color-hover: rgba(255,255,255,0.2);
+  --highlight-color: rgba(0,0,0,0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+  --stroke-color-light-mode: rgba(0, 0, 0, 0.50);
+  --switch-align: right;
+}
+
+body {
+  background: var(--bg-url) no-repeat top center/cover;
+}
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color)
+}
+
+/*container*/
+#container {
+  width: 360px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+}
+
+/*profile*/
+#profile {
+  padding: 24px;
+  text-align: center;
+}
+#profile img {
+  width: 112px;
+}
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/*switch*/
+#switch {
+  position: relative; /*esse comando permite que a posição dos elementos filhos sejam relativas ao elemento pai*/
+  width: 64px;
+  margin: 4px auto; /*elementos block podem ser alinhados ao centro dando um margin auto nas laterais*/
+}
+#switch button{
+  background: white no-repeat center;
+  background-image: var(--switch-bg-url);
+  height: 32px;
+  width: 32px;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute; /*a posição se torna absoluta*/
+  justify-content: var(--switch-align);
+  z-index: 1; /*z-indezx é liberado pela posição absoluta, e o valor indica a prioridade de posicionamento em relação aos demais elementos contidos dentro do elemento pai*/
+  top: 50%;
+  transform: translateY(-50%); /*faz com que o elemento se movimente através do eixo y*/
+}
+.light #switch button{ /*seleciona o elemento button quando a classe .light estiver em execução*/
+  right: 0;
+  left: initial;
+}
+#switch span {
+  display:block; /*por ser display inline o span não aceita algumas propriedades, como a largura, portanto é necessário alterar o display para "block"*/
+  height: 24px;
+  width: 64px;
+  border: 1px solid var(--stroke-color-light-mode);
+  border-radius: 9999px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/*lista desordenada*/
+ul {
+  list-style: none; /* tira os marcadores da lista */
+  display: flex;
+  gap: 16px; /*distância entre uma caixa e outra */
+  flex-direction: column;
+  padding: 24px 0;
+}
+ul li a {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px; /*preenchimento entre o item e a borda da caixa */
+  justify-content: center; /*posição do conteúdo da caixa dentro da mesma*/
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s;
+  /*colocar essas propriedades em "ul li a" faz com que todo o botão funcione como um link, já que o que está assumindo propriedade flex é o hiperlink e não o texto visível, de outra forma, se as propriedades fossem aplicadas em "ul li" apenas, o link estaria limitado apenas ao texto.*/
+}
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/*social links*/
+#social-links {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  font-size: 24px;
+}
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+#social-links a:hover {
+  background-color: var(--highlight-color);
+}
+
+/*footer*/
+Footer {
+  text-align: center;
+  font-weight: 400;
+  padding: 24px;
+  justify-content: center;
+  gap: 8px;
+  display: flex;
+  align-self: stretch;
+  font-size: 14px;
+}
