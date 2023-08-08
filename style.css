@@ -1,10 +1,9 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /*as propriedades largura e altura incluem o conteúdo, o preenchimento (padding) e a borda (border), mas não a margem.*/
+  box-sizing: border-box;
 }
 
-/* aqui ficarão os parâmetros raiz da página */
 :root {
   --text-color: white;
   --bg-url: url(./assets/bg-mobile.jpg);
@@ -16,7 +15,6 @@
   --stroke-color-light-mode: rgba(255, 255, 255, 0.5);
 }
 
-/* a classe .light está contida no <html> e nela são adicionadas alterações de estilo do root, que devem ser colocadas no CSS como var()*/
 .light {
   --text-color: black;
   --bg-url: url(./assets/bg-mobile-light.jpg);
@@ -26,7 +24,6 @@
   --highlight-color: rgba(0, 0, 0, 0.2);
   --switch-bg-url: url(./assets/moon-stars.svg);
   --stroke-color-light-mode: rgba(0, 0, 0, 0.5);
-
 }
 
 body {
@@ -62,37 +59,33 @@ body * {
 
 /*switch*/
 #switch {
-  position: relative; /*esse comando permite que a posição dos elementos filhos sejam relativas ao elemento pai*/
+  position: relative;
   width: 64px;
-  margin: 4px auto; /*elementos block podem ser alinhados ao centro dando um margin auto nas laterais*/
+  margin: 4px auto;
 }
 #switch button {
   background: white no-repeat center;
   background-image: var(--switch-bg-url);
-
   height: 32px;
   width: 32px;
-
   border: 0;
   border-radius: 50%;
-
   position: absolute;
   left: 0;
   z-index: 1;
   top: 50%;
-  transform: translateY(-50%); 
-  animation: slide-back .2s;
+  transform: translateY(-50%);
+  animation: slide-back 0.2s;
 }
 
-#switch button:hover{
+#switch button:hover {
   outline: 8px solid var(--highlight-color);
 }
 .light #switch button {
-  animation: slide-in .2s forwards;
-
+  animation: slide-in 0.2s forwards;
 }
 #switch span {
-  display: block; /*por ser display inline o span não aceita algumas propriedades, como a largura, portanto é necessário alterar o display para "block"*/
+  display: block;
   height: 24px;
   width: 64px;
   border: 1px solid var(--stroke-color-light-mode);
@@ -103,17 +96,17 @@ body * {
 
 /*lista desordenada*/
 ul {
-  list-style: none; /* tira os marcadores da lista */
+  list-style: none;
   display: flex;
-  gap: 16px; /*distância entre uma caixa e outra */
+  gap: 16px;
   flex-direction: column;
   padding: 24px 0;
 }
 ul li a {
   display: flex;
   align-items: center;
-  padding: 16px 24px; /*preenchimento entre o item e a borda da caixa */
-  justify-content: center; /*posição do conteúdo da caixa dentro da mesma*/
+  padding: 16px 24px;
+  justify-content: center;
   background: var(--surface-color);
   border: 1px solid var(--stroke-color);
   border-radius: 8px;
@@ -122,7 +115,6 @@ ul li a {
   text-decoration: none;
   font-weight: 500;
   transition: background 0.2s;
-  /*colocar essas propriedades em "ul li a" faz com que todo o botão funcione como um link, já que o que está assumindo propriedade flex é o hiperlink e não o texto visível, de outra forma, se as propriedades fossem aplicadas em "ul li" apenas, o link estaria limitado apenas ao texto.*/
 }
 ul li a:hover {
   background: var(--surface-color-hover);
@@ -169,12 +161,12 @@ Footer {
   }
 }
 @keyframes slide-in {
-from {
-  left: 0;
-}
-to {
-  left: 50%;
-}
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
 }
 @keyframes slide-back {
   from {
