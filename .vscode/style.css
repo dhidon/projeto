@@ -14,7 +14,6 @@
   --highlight-color: rgba(255, 255, 255, 0.2);
   --switch-bg-url: url(./assets/sun.svg);
   --stroke-color-light-mode: rgba(255, 255, 255, 0.5);
-  --switch-align: left;
 }
 
 /* a classe .light está contida no <html> e nela são adicionadas alterações de estilo do root, que devem ser colocadas no CSS como var()*/
@@ -27,7 +26,7 @@
   --highlight-color: rgba(0, 0, 0, 0.2);
   --switch-bg-url: url(./assets/moon-stars.svg);
   --stroke-color-light-mode: rgba(0, 0, 0, 0.5);
-  --switch-align: right;
+
 }
 
 body {
@@ -70,23 +69,27 @@ body * {
 #switch button {
   background: white no-repeat center;
   background-image: var(--switch-bg-url);
+
   height: 32px;
   width: 32px;
+
   border: 0;
   border-radius: 50%;
 
-  position: absolute; /*a posição se torna absoluta*/
-  justify-content: var(--switch-align);
-  z-index: 1; /*z-indezx é liberado pela posição absoluta, e o valor indica a prioridade de posicionamento em relação aos demais elementos contidos dentro do elemento pai*/
+  position: absolute;
+  left: 0;
+  z-index: 1;
   top: 50%;
-  transform: translateY(
-    -50%
-  ); /*faz com que o elemento se movimente através do eixo y*/
+  transform: translateY(-50%); 
+  animation: slide-back .2s;
+}
+
+#switch button:hover{
+  outline: 8px solid var(--highlight-color);
 }
 .light #switch button {
-  /*seleciona o elemento button quando a classe .light estiver em execução*/
-  right: 0;
-  left: initial;
+  animation: slide-in .2s forwards;
+
 }
 #switch span {
   display: block; /*por ser display inline o span não aceita algumas propriedades, como a largura, portanto é necessário alterar o display para "block"*/
@@ -163,5 +166,21 @@ Footer {
   }
   .light {
     --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+@keyframes slide-in {
+from {
+  left: 0;
+}
+to {
+  left: 50%;
+}
+}
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
