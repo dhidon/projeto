@@ -4,19 +4,19 @@ function toggleMode() {
 
   const img = document.querySelector("#profile img")
   if (html.classList.contains("light")) {
-    img.setAttribute("src", "./assets/avatar-light.png")
+    img.setAttribute("src", "./assets/avatar-light.jpg")
   } else {
-    img.setAttribute("src", "./assets/avatar.png")
+    img.setAttribute("src", "./assets/avatar.jpg")
   }
   if (html.classList.contains("light")) {
     img.setAttribute(
       "alt",
-      "foto de Mayk Brito sorrindo de óculos escuros, camisa e jaquela pretas em um fundo azul"
+      "foto de Rodrigo Matos usando camisa cinza e segurando um copo de café em uma cozinha"
     )
   } else {
     img.setAttribute(
       "alt",
-      "foto de Mayk Brito sorrindo de óculos e camisa preta em um fundo amarelo"
+      "foto de Rodrigo Matos reflexivo enquanto segura um copo de cerveja em um bar"
     )
   }
 }
