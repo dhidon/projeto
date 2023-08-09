@@ -80,7 +80,7 @@ body * {
 }
 
 #switch button:hover {
-  outline: 8px solid var(--highlight-color);
+  outline: 5px solid var(--highlight-color);
 }
 .light #switch button {
   animation: slide-in 0.2s forwards;
@@ -115,7 +115,7 @@ ul li a {
   -webkit-backdrop-filter: blur(10px);
   text-decoration: none;
   font-weight: 500;
-  transition: background 0.2s;
+  transition: background 0.8s;
 }
 ul li a:hover {
   background: var(--surface-color-hover);
